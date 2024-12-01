@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('tourbackground.jpg');
+            background-size: 1700px 1000px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .black-box {
+            color: rgb(255, 255, 255);
+            height: 180px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 110px;
+            align-items: center;
+            position: relative;
+        }
+
+        .menu a {
+            text-decoration: none;
+            font-family: 'Karantina', sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            color: white;
+            position: relative;
+        }
+
+        .menu a.active {
+            border-bottom: 3px solid white;
+            padding-bottom: 5px;
+        }
+
+        .menu a:hover {
+            color: #ffd700;
+            border-bottom: 3px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .merch-img {
+            position: absolute;
+            top: -135px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 104px;
+        }
+
+        .search-img {
+            position: absolute;
+            top: 25px;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .shop-img {
+            position: absolute;
+            top: 25px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .profile-img {
+            position: absolute;
+            top: 28px;
+            right: 85px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+            width: 100%;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+
+        .black-box-grid {
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: normal;
+            text-align: left;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .title {
+            font-size: 16px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .bottom-text {
+            font-size: 14px;
+            color: gray;
+            font-weight: normal;
+            margin-top: 10px;
+        }
+
+        .bottom-text span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .search-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0; 
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+            color: white;
+        }
+
+        .search-popup h2 {
+            font-family: 'Karantina', sans-serif;
+            font-size: 30px;
+            margin: 20px;
+            border-bottom: 2px solid yellow;
+            padding-bottom: 5px;
+        }
+
+        .search-popup ul {
+            list-style: none;
+            padding: 0 20px;
+        }
+
+        .search-popup li {
+            font-family: 'Karantina', sans-serif;
+            font-size: 24px;
+            margin: 15px 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .search-popup li:hover {
+            color: yellow;
+        }
+
+        .profile-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0; 
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+            color: white;
+        }
+
+        .profile-popup h2 {
+            font-family: 'Karantina', sans-serif;
+            font-size: 30px;
+            margin: 20px;
+            border-bottom: 2px solid yellow;
+            padding-bottom: 5px;
+        }
+
+        .profile-popup p {
+            font-family: 'Karantina', sans-serif;
+            font-size: 22px;
+            margin: 20px;
+        }
+
+        .logout-button {
+            font-family: 'Karantina', sans-serif;
+            font-size: 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: darkred;
+        }
+
+        .close-popup {
+            background: none;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .close-popup:hover {
+            color: yellow;
+        }
+        
+@media screen and (max-width: 768px) {
+    body {
+        background-size: cover; 
+        background-position: center;
+    }
+
+    .menu {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+
+    .menu a {
+        font-size: 20px;
+    }
+
+    .merch-img {
+        position: static; 
+        margin: 10px auto; 
+        transform: none; 
+    }
+
+    .search-img,
+    .profile-img,
+    .shop-img {
+        width: 40px; 
+        height: 40px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+        padding: 0 10px; 
+    }
+
+    .black-box-grid {
+        width: 100%; 
+        height: auto; 
+        padding: 10px; 
+    }
+
+    .title {
+        font-size: 14px; 
+    }
+
+    .bottom-text {
+        font-size: 12px;
+    }
+
+    .search-popup,
+    .profile-popup {
+        width: 100%; 
+    }
+
+    .search-popup h2,
+    .profile-popup h2 {
+        font-size: 24px;
+    }
+
+    .logout-button {
+        font-size: 18px; 
+        padding: 8px 15px; 
+    }
+    @media (max-width: 768px) {
+    .grid-container {
+        max-width: 95%; 
+        padding: 0 10px;
+    }
+}
+
+    .close-popup {
+        font-size: 14px; 
+    }
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="black-box">
+        <div class="menu">
+            <a href="tour.html" class="active">TOUR</a>
+            <img class="merch-img" src="logowhite.png" alt="Merch Image">
+            <a href="merch.html">MERCH</a>
+            <a href="band.html">BAND</a>
+        </div>
+    </div>
+
+    
+    <img class="search-img" src="Search-button.png" alt="Search Button" onclick="toggleSearchPopup()">
+    <img class="profile-img" src="Profile-icon1.png" alt="Profile Icon" onclick="toggleProfilePopup()">
+    <a href="shop.html"><img class="shop-img" src="Shop-icon.png" alt="Shop Icon"></a> 
+
+    
+    <div class="search-popup" id="searchPopup">
+        <h2>Search</h2>
+        <ul>
+            <li onclick="window.location.href='merch.html'">MERCH</li>
+            <li onclick="window.location.href='band.html'">BAND</li>
+            <li onclick="window.location.href='tour.html'">TOUR</li>
+        </ul>
+        <button class="close-popup" onclick="toggleSearchPopup()">Close</button>
+    </div>
+
+    
+    <div class="profile-popup" id="profilePopup">
+        <h2>My Account</h2>
+        <p>Welcome, <strong>John Doe</strong></p>
+        <button class="logout-button" onclick="logout()">Log Out</button>
+        <button class="close-popup" onclick="toggleProfilePopup()">Close</button>
+    </div>
+
+    
+    <div class="grid-container">
+       
+        <div class="black-box-grid">
+            <div class="title">
+                DECEMBER 13 2024<br>
+                LOS ANGELES, CALIFORNIA,<br>
+                UNITED STATES<br>
+                AWMH HELPING HANDS CONCERT & AUCTION<br>
+                YOUTUBE THEATER
+            </div>
+            <div class="bottom-text">
+                <span>BUY TICKETS</span>
+                <span>ABOUT THE FESTIVAL</span>
+                <span>MORE INFO</span>
+            </div>
+        </div>
+
+        
+        <div class="black-box-grid">
+            <div class="title">
+                JANUARY 10 2025<br>
+                NEW YORK CITY, NEW YORK,<br>
+                UNITED STATES<br>
+                WINTER JAM FESTIVAL<br>
+                MADISON SQUARE GARDEN
+            </div>
+            <div class="bottom-text">
+                <span>BUY TICKETS</span>
+                <span>ABOUT THE FESTIVAL</span>
+                <span>MORE INFO</span>
+            </div>
+        </div>
+
+        <div class="black-box-grid">
+            <div class="title">
+                FEBRUARY 15 2025<br>
+                CHICAGO, ILLINOIS,<br>
+                UNITED STATES<br>
+                FESTIVAL<br>
+                UNITED CENTER
+            </div>
+            <div class="bottom-text">
+                <span>BUY TICKETS</span>
+                <span>ABOUT THE FESTIVAL</span>
+                <span>MORE INFO</span>
+            </div>
+        </div>
+
+       
+        <div class="black-box-grid">
+            <div class="title">
+                MARCH 22 2025<br>
+                AUSTIN, TEXAS,<br>
+                UNITED STATES<br>
+                SOUTH BY SOUTHWEST LIVE PERFORMANCE<br>
+                MOODY THEATER
+            </div>
+            <div class="bottom-text">
+                <span>BUY TICKETS</span>
+                <span>ABOUT THE FESTIVAL</span>
+                <span>MORE INFO</span>
+            </div>
+        </div>
+
+        
+        <div class="black-box-grid">
+            <div class="title">
+                APRIL 10 2025<br>
+                SAN FRANCISCO, CALIFORNIA,<br>
+                UNITED STATES<br>
+                MUSIC FESTIVAL FOR GOOD<br>
+                BILL GRAHAM CIVIC AUDITORIUM
+            </div>
+            <div class="bottom-text">
+                <span>BUY TICKETS</span>
+                <span>ABOUT THE FESTIVAL</span>
+                <span>MORE INFO</span>
+            </div>
+        </div>
+
+        
+        <div class="black-box-grid">
+            <div class="title">
+                MAY 20 2025<br>
+                SEATTLE, WASHINGTON,<br>
+                UNITED STATES<br>
+                SUMMER JAM CONCERT SERIES<br>
+                WA MU THEATER
+            </div>
+            <div class="bottom-text">
+                <span>BUY TICKETS</span>
+                <span>ABOUT THE FESTIVAL</span>
+                <span>MORE INFO</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const searchPopup = document.getElementById('searchPopup');
+        const profilePopup = document.getElementById('profilePopup');
+
+        function toggleSearchPopup() {
+            searchPopup.style.display = searchPopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleProfilePopup() {
+            profilePopup.style.display = profilePopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function logout() {
+            alert('You have been logged out.');
+            
+        }
+    </script>
+</body>
+</html>

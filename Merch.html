@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch Page</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('merchbackground.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        
+        .black-box {
+            color: rgb(255, 255, 255);
+            height: 180px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 110px;
+            align-items: center;
+            position: relative;
+        }
+
+        .menu a {
+            text-decoration: none;
+            font-family: 'Karantina', sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            color: white;
+            position: relative;
+        }
+
+        .menu a.active {
+            border-bottom: 4px solid white;
+        }
+
+        .menu a:hover {
+            color: #ffd700;
+            border-bottom: 4px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 10px;
+        }
+
+        .merch-img {
+            width: 280px;
+            height: 100px;
+        }
+
+        .rectangle {
+            position: absolute;
+            top: 435px;
+            left: 700px;
+            width: 150px;
+            height: 50px;
+            border: 2px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Karantina', sans-serif;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .rectangle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-img, .shop-img, .profile-img {
+            position: absolute;
+            top: 25px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .search-img {
+            left: 10px;
+        }
+
+        .shop-img {
+            right: 10px;
+        }
+
+        .profile-img {
+            right: 85px;
+        }
+
+        .search-img:hover, .shop-img:hover, .profile-img:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        
+        .search-popup, .profile-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            color: white;
+            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .search-popup {
+            left: 0;
+            padding: 20px;
+        }
+
+        .profile-popup {
+            right: 0;
+            padding: 20px;
+        }
+
+        .search-popup h2, .profile-popup h2 {
+            font-family: 'Karantina', sans-serif;
+            font-size: 30px;
+            margin: 20px 0;
+            border-bottom: 2px solid yellow;
+            padding-bottom: 5px;
+        }
+
+        .search-popup ul {
+            list-style: none;
+            padding: 0 20px;
+        }
+
+        .search-popup li {
+            font-family: 'Karantina', sans-serif;
+            font-size: 24px;
+            margin: 15px 0;
+            cursor: pointer;
+        }
+
+        .search-popup li:hover {
+            color: yellow;
+        }
+
+        .close-popup {
+            background: none;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .close-popup:hover {
+            color: yellow;
+        }
+
+       
+        .profile-popup p {
+            font-family: 'Karantina', sans-serif;
+            font-size: 22px;
+            margin: 20px;
+        }
+
+        .logout-button {
+            font-family: 'Karantina', sans-serif;
+            font-size: 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: darkred;
+        }
+
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                top: 20px;
+            }
+
+            .merch-img {
+                width: 200px;
+                height: 70px;
+            }
+
+            .menu {
+                flex-direction: column;
+                gap: 20px;
+                margin-bottom: 10px;
+            }
+
+            .menu a {
+                font-size: 24px;
+            }
+
+            .rectangle {
+                top: 500px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 200px;
+                font-size: 16px;
+            }
+
+            .search-img, .shop-img, .profile-img {
+                width: 40px;
+                height: 40px;
+                top: 15px;
+            }
+
+            .search-img {
+                left: 15px;
+            }
+
+            .profile-img {
+                right: 15px;
+            }
+
+            .shop-img {
+                right: 70px;
+            }
+
+            .search-popup, .profile-popup {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="black-box">
+        <div class="menu">
+            <a href="tour.html">TOUR</a>
+            <a href="merch.html" class="active">MERCH</a>
+            <a href="band.html">BAND</a>
+        </div>
+    </div>
+
+    
+    <div class="logo-container">
+        <a href="home.html"><img class="merch-img" src="logowhite.png" alt="Merch Logo"></a>
+    </div>
+
+   
+    <a href="shop.html" class="rectangle">
+        SHOP NOW
+    </a>
+
+    
+    <img class="search-img" src="Search-button.png" alt="Search Button" onclick="toggleSearchPopup()">
+    <img class="shop-img" src="Shop-icon.png" alt="Shop Icon" onclick="window.location.href='shop.html'">
+    <img class="profile-img" src="Profile-icon1.png" alt="Profile Icon" onclick="toggleProfilePopup()">
+
+ 
+    <div class="search-popup" id="searchPopup">
+        <h2>Search</h2>
+        <ul>
+            <li onclick="window.location.href='merch.html'">MERCH</li>
+            <li onclick="window.location.href='band.html'">BAND</li>
+            <li onclick="window.location.href='tour.html'">TOUR</li>
+        </ul>
+        <button class="close-popup" onclick="toggleSearchPopup()">Close</button>
+    </div>
+
+    
+    <div class="profile-popup" id="profilePopup">
+        <h2>My Account</h2>
+        <p>Welcome, <strong>John Doe</strong></p>
+        <button class="logout-button" onclick="logout()">Log Out</button>
+        <button class="close-popup" onclick="toggleProfilePopup()">Close</button>
+    </div>
+
+    <script>
+        const searchPopup = document.getElementById('searchPopup');
+        const profilePopup = document.getElementById('profilePopup');
+
+        function toggleSearchPopup() {
+            searchPopup.style.display = searchPopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleProfilePopup() {
+            profilePopup.style.display = profilePopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function logout() {
+            alert('You have been logged out.');
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Band Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .background {
+            background-image: url('band.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        .black-box {
+            color: white;
+            height: 180px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            width: 365.93px; 
+            gap: 0; 
+            align-items: center;
+            position: relative;
+        }
+
+        .menu span {
+            font-family: 'Karantina', sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            cursor: pointer;
+            position: relative;
+            flex: 1; 
+            text-align: center; 
+        }
+
+        .menu span:hover {
+            color: yellow;
+        }
+
+        .menu span:hover::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: auto; 
+            height: 4px; 
+            background-color: yellow;
+        }
+
+        .merch-img {
+            position: absolute;
+            top: -135px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 104px;
+        }
+
+        /* Icons */
+        .search-img, .shop-img, .profile-img {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .search-img {
+            position: absolute;
+            top: 25px;
+            left: 10px;
+        }
+
+        .profile-img {
+            position: absolute;
+            top: 28px;
+            right: 85px;
+        }
+
+        .shop-img {
+            position: absolute;
+            top: 25px;
+            right: 10px;
+        }
+
+        
+        .search-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+            color: white;
+        }
+
+        .search-popup h2 {
+            font-family: 'Karantina', sans-serif;
+            font-size: 30px;
+            margin: 20px;
+            border-bottom: 2px solid yellow;
+            padding-bottom: 5px;
+        }
+
+        .search-popup ul {
+            list-style: none;
+            padding: 0 20px;
+        }
+
+        .search-popup li {
+            font-family: 'Karantina', sans-serif;
+            font-size: 24px;
+            margin: 15px 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .search-popup li:hover {
+            color: yellow;
+        }
+
+        .close-popup {
+            background: none;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .close-popup:hover {
+            color: yellow;
+        }
+
+        
+        .profile-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+            color: white;
+        }
+
+        .profile-popup h2 {
+            font-family: 'Karantina', sans-serif;
+            font-size: 30px;
+            margin: 20px;
+            border-bottom: 2px solid yellow;
+            padding-bottom: 5px;
+        }
+
+        .profile-popup p {
+            font-family: 'Karantina', sans-serif;
+            font-size: 22px;
+            margin: 20px;
+        }
+
+        .logout-button {
+            font-family: 'Karantina', sans-serif;
+            font-size: 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: darkred;
+        }
+    </style>
+    <script>
+        
+        function toggleSearchPopup() {
+            const searchPopup = document.getElementById('searchPopup');
+            searchPopup.style.display = searchPopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        
+        function toggleProfilePopup() {
+            const profilePopup = document.getElementById('profilePopup');
+            profilePopup.style.display = profilePopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+       
+        function logout() {
+            alert('You have been logged out.');
+            
+        }
+    </script>
+</head>
+<body>
+    
+    <div class="background">
+        <div class="black-box">
+            <div class="menu">
+                <span onclick="window.location.href='tour.html'">TOUR</span>
+                <a href="home.html">
+                    <img class="merch-img" src="logowhite.png" alt="Merch Image">
+                </a>
+                <span onclick="window.location.href='merch.html'">MERCH</span>
+                <span onclick="window.location.href='band.html'">BAND</span>
+            </div>
+        </div>
+    </div>
+
+   
+    <img class="search-img" src="Search-button.png" alt="Search" onclick="toggleSearchPopup()">
+    <img class="profile-img" src="Profile-icon1.png" alt="Profile" onclick="toggleProfilePopup()">
+    <img class="shop-img" src="Shop-icon.png" alt="Shop" onclick="window.location.href='shop.html'">
+
+    
+    <div id="searchPopup" class="search-popup">
+        <h2>Search</h2>
+        <ul>
+            <li onclick="window.location.href='merch.html'">MERCH</li>
+            <li onclick="window.location.href='band.html'">BAND</li>
+            <li onclick="window.location.href='tour.html'">TOUR</li>
+        </ul>
+        <button class="close-popup" onclick="toggleSearchPopup()">Close</button>
+    </div>
+
+    
+    <div id="profilePopup" class="profile-popup">
+        <h2>My Account</h2>
+        <p>Welcome, <strong>John Doe</strong></p>
+        <button class="logout-button" onclick="logout()">Log Out</button>
+        <button class="close-popup" onclick="toggleProfilePopup()">Close</button>
+    </div>
+
+    <div class="band-members">
+        <div class="member">
+            <h3>James Hetfield</h3>
+            <p>
+                James Hetfield is the voice and rhythmic backbone of Metallica. Born on August 3, 1963, in Downey, California, 
+                Hetfield co-founded the band in 1981 alongside Lars Ulrich. Known for his powerful vocals and down-picking guitar 
+                technique, Hetfield has written some of Metallica's most iconic songs, such as "Enter Sandman," "Master of Puppets," 
+                and "One." His lyrics often explore themes of inner struggle, addiction, and resilience, reflecting his personal journey. 
+                Hetfield remains a driving force in Metallica's sound and vision.
+            </p>
+        </div>
+        <div class="member">
+            <h3>Lars Ulrich</h3>
+            <p>
+                Lars Ulrich, Metallica’s co-founder and drummer, was born on December 26, 1963, in Gentofte, Denmark. 
+                A pioneer of thrash metal drumming, Ulrich's intricate rhythms and high-energy performances have been a 
+                cornerstone of Metallica's music since its inception. Aside from his musical talents, Ulrich is known for 
+                his business acumen and has played a key role in steering Metallica's career to global success. His contributions 
+                to songs like "Battery" and "One" showcase his versatility and creativity behind the drum kit.
+            </p>
+        </div>
+        <div class="member">
+            <h3>Kirk Hammett</h3>
+            <p>
+                Kirk Hammett, Metallica's lead guitarist, joined the band in 1983, bringing his distinctive style and 
+                technical skill. Born on November 18, 1962, in San Francisco, California, Hammett’s solos blend melody, 
+                speed, and emotion, as heard in classics like "Fade to Black," "Creeping Death," and "The Unforgiven." 
+                A student of legendary guitarist Joe Satriani, Hammett incorporates a wide range of influences, from 
+                metal to blues, into his playing. His creative input continues to shape Metallica's evolving sound.
+            </p>
+        </div>
+        <div class="member">
+            <h3>Robert Trujillo</h3>
+            <p>
+                Robert Trujillo has been Metallica’s bassist since 2003, adding his distinct energy and groove to the band’s sound. 
+                Born on October 23, 1964, in Santa Monica, California, Trujillo was previously a member of Suicidal Tendencies 
+                and Ozzy Osbourne’s band before joining Metallica. Known for his dynamic stage presence and technical prowess, 
+                Trujillo has contributed to albums like "Death Magnetic" and "Hardwired... to Self-Destruct." His innovative bass 
+                lines and deep connection with the music have solidified his place as a vital member of the band.
+            </p>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        
+        .logo {
+            display: block;
+            margin: 20px auto; 
+            width: 150px; 
+            height: auto;
+            cursor: pointer; 
+        }
+
+       
+        .main-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+        }
+
+        .sidebar h3 {
+            font-family: 'Karantina', sans-serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .sidebar li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sidebar li a:hover {
+            color: red;
+        }
+
+        
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .content-header h2 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .content-header .sort {
+            font-size: 16px;
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .item {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .item h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .item p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .item .price {
+            color: red;
+            font-weight: bold;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    
+    <a href="home.html">
+        <img class="logo" src="logoblack.png" alt="Logo">
+    </a>
+
+   
+    <div class="main-container">
+        
+        <div class="sidebar">
+            <h3>CATEGORIES</h3>
+            <ul>
+                <li><a href="#">New & Featured</a></li>
+                <li><a href="#">Gifts & Stocking Stuffers</a></li>
+                <li><a href="#">Media</a></li>
+                <li><a href="#">Apparel</a>
+                    <ul>
+                        <li><a href="#">Shirts</a></li>
+                        <li><a href="#">T-Shirts</a></li>
+                        <li><a href="#">Outerwear</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Pants & Shorts</a></li>
+            </ul>
+        </div>
+
+        
+        <div class="content">
+            <div class="content-header">
+                <h2>132 Items</h2>
+                <div class="sort">Sort By</div>
+            </div>
+
+            <div class="item-grid">
+                
+                <div class="item">
+                    <img src="merch1.jpg" alt="Merch Item">
+                    <h3>Fifth Member Exclusive</h3>
+                    <p class="price">$79.99</p>
+                </div>
+                <div class="item">
+                    <img src="merch2.jpg" alt="Merch Item">
+                    <h3>Est. 1981 T-Shirt</h3>
+                    <p class="price">$26.39</p>
+                </div>
+                <div class="item">
+                    <img src="merch3.jpg" alt="Merch Item">
+                    <h3>Ride the Lightning T-Shirt</h3>
+                    <p class="price">$27.99</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
